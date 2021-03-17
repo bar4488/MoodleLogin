@@ -1,0 +1,12 @@
+{
+  "name": "Moodle Logger",
+  "version": "1.0",
+  "description": "login to moodle automaticaly!",
+  "content_scripts": [
+    {
+      "matches": ["*://moodle.tau.ac.il/*"],
+      "js": ["login.js"]
+    }
+  ],
+  "manifest_version": 2
+}
