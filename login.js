@@ -29,17 +29,21 @@ function setLoginParameters(params, callback) {
 }
 
 function setLoginInput(username, id, password)
-{
-    frame.getElementsByName("Ecom_User_ID")[0].value = username;
-    frame.getElementsByName("Ecom_User_Pid")[0].value = id;
-    frame.getElementsByName("Ecom_Password")[0].value = password;
-    frame.getElementsByClassName("subBottun")[0].onclick();
+{  
+    if (username != null)
+        frame.getElementsByName("Ecom_User_ID")[0].value = username;
+    if (id != null)
+        frame.getElementsByName("Ecom_User_Pid")[0].value = id;
+    if (password != null)
+        frame.getElementsByName("Ecom_Password")[0].value = password;
+    setTimeout(()=>frame.getElementsByClassName("subBottun")[0].click(), 500);
 }
 
 function saveDetails()
 {
     if(confirm("Do you want to save these details?"))
     {
+        console.log('Entered saveDetails');
         let username = document.getElementsByName("Ecom_User_ID")[0].value;
         let id = document.getElementsByName("Ecom_User_Pid")[0].value;
         let password = document.getElementsByName("Ecom_Password")[0].value;
