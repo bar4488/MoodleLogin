@@ -3,7 +3,7 @@ var frame;
 
 
 function login() {
-    frame = document.getElementById("content").contentWindow.document;
+    frame = document.getElementById("content").contentWindow.document.getElementById("credentials").contentWindow.document;
     getLoginParameters(setLoginInput);
 }
 
