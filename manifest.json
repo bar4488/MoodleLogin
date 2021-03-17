@@ -8,7 +8,7 @@
       "js": ["sendToLogin.js"]
     },
     {
-      "matches": ["*://moodle.tau.ac.il/*"],
+      "matches": ["*://nidp.tau.ac.il/*"],
       "js": ["login.js"]
     }
   ],
