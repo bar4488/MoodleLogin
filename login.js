@@ -1,2 +1,2 @@
-function move_to_login() {
-}
+
+window.onload = move_to_login;

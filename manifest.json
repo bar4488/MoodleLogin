@@ -4,6 +4,10 @@
   "description": "login to moodle automaticaly!",
   "content_scripts": [
     {
+      "matches": ["*://*.tau.ac.il/*"],
+      "js": ["sendToLogin.js"]
+    },
+    {
       "matches": ["*://moodle.tau.ac.il/*"],
       "js": ["login.js"]
     }
