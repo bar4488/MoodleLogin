@@ -5,9 +5,9 @@ function login() {
 }
 
 function getLoginParameters(callback) {
-    chrome.storage.sync.get("loginParams", function(params){
+    chrome.storage.sync.get(["loginParams"], function(p){
+        let params = p[0]
         if(params == null) {
-            alert("We dont have your information. Type it now and save it for the next time!");
             // change button click to saveDetails
             loginClick = document.getElementsByClassName("subBottun")[0].onclick;
             document.getElementsByClassName("subBottun")[0].onclick = saveDetails;
@@ -23,6 +23,33 @@ function setLoginParameters(params, callback) {
         //saved!
         callback();
     });
+}
+
+function setLoginInputs(username, id, password)
+{
+    document.getElementsByName("Ecom_User_ID")[0].value = username;
+    document.getElementsByName("Ecom_User_Pid")[0].value = id;
+    document.getElementsByName("Ecom_Password")[0].value = password;
+    document.getElementsByClassName("subBottun")[0].onclick();
+}
+
+function saveDetails()
+{
+    if(confirm("Do you want to save these details?"))
+    {
+        let username = document.getElementsByName("Ecom_User_ID")[0].value;
+        let id = document.getElementsByName("Ecom_User_Pid")[0].value;
+        let password = document.getElementsByName("Ecom_Password")[0].value;
+        let dict = {
+            "username": username,
+            "id": id,
+            "password": password
+        };
+        setLoginParameters(dict, loginClick);
+    }
+    else {
+        loginClick();
+    }
 }
 
 window.onload = login;
