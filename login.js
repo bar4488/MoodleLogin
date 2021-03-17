@@ -1,6 +1,9 @@
 var loginClick;
+var frame;
+
 
 function login() {
+    frame = document.getElementById("content").contentWindow.document;
     getLoginParameters(setLoginInput);
 }
 
@@ -9,8 +12,8 @@ function getLoginParameters(callback) {
         let params = p[0]
         if(params == null) {
             // change button click to saveDetails
-            loginClick = document.getElementsByClassName("subBottun")[0].onclick;
-            document.getElementsByClassName("subBottun")[0].onclick = saveDetails;
+            loginClick = frame.getElementsByClassName("subBottun")[0].onclick;
+            frame.getElementsByClassName("subBottun")[0].onclick = saveDetails;
         }
         else {
             callback(params.username, params.id, params.password);
@@ -25,12 +28,12 @@ function setLoginParameters(params, callback) {
     });
 }
 
-function setLoginInputs(username, id, password)
+function setLoginInput(username, id, password)
 {
-    document.getElementsByName("Ecom_User_ID")[0].value = username;
-    document.getElementsByName("Ecom_User_Pid")[0].value = id;
-    document.getElementsByName("Ecom_Password")[0].value = password;
-    document.getElementsByClassName("subBottun")[0].onclick();
+    frame.getElementsByName("Ecom_User_ID")[0].value = username;
+    frame.getElementsByName("Ecom_User_Pid")[0].value = id;
+    frame.getElementsByName("Ecom_Password")[0].value = password;
+    frame.getElementsByClassName("subBottun")[0].onclick();
 }
 
 function saveDetails()
